@@ -1,5 +1,7 @@
 Autor: Radosław Lipski
+
 Tytuł pracy: "Analiza Przydatności Renderowanych Scen 3D w Procesie Uczenia Głębokich Sieci Neuronowych do Przetwarzania Obrazów"
+
 
 Opis skryptów:
 
