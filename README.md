@@ -10,16 +10,16 @@ Tytuł pracy: "Analiza Przydatności Renderowanych Scen 3D w Procesie Uczenia G�
 
 •	create_yolo_subset.py - tworzy podzbiór o zadanym rozmiarze w zadanej lokalizacji na podstawie wskazanego zbioru YOLO
 
-•	format_det_results.py - formatuje predykcje detekcji wyeksportowane z FiftyOne do formatu COCO wymaganego przez serwer test-dev (bbox)
+•	format_det_results.py - formatuje predykcje detekcji wyeksportowane z FiftyOne do formatu COCO, wymaganego przez serwer test-dev (bbox)
 
-•	format_segm_results.py - formatuje predykcje segmentacji wyeksportowane z FiftyOne do formatu COCO wymaganego przez serwer test-dev (segm), konwertuje polygony do formatu RLE  !WYMAGA BLENDERPROC!
+•	format_segm_results.py - formatuje predykcje segmentacji wyeksportowane z FiftyOne do formatu COCO, wymaganego przez serwer test-dev (segm); konwertuje polygony do formatu RLE  !WYMAGA BLENDERPROC!
 
 •	augm_synth_data.py - generuje zmodyfikowane obrazy na podstawie obrazu wejściowego i maski binarnej za pomocą modelu Stable Diffusion 
 
-•	annotate_augm_data.py - kopiuje oryginalne pliki .txt z etykietami w formacie YOLO do wskazanej lokalizacji i dostosowuj ich nazwy na podstawie wskazanych obrazów
+•	annotate_augm_data.py - kopiuje oryginalne pliki .txt z etykietami w formacie YOLO do wskazanej lokalizacji i dostosowuje ich nazwy na podstawie wskazanych obrazów
 
-•	remove_files.py - usuwa z danej lokalizacji wszystkie pliki, które znajdują się w innej
+•	remove_files.py - usuwa z danej lokalizacji wszystkie pliki, które znajdują się w drugiej wskazanej lokalizacji
 
-•	replace_background.py - podmienia we wskazanym obrazie tło na wskazany obraz, na podstawie wskazanej maski 
+•	replace_background.py - podmienia we wskazanym obrazie tło na drugi wskazany obraz, na podstawie wskazanej maski 
 
 •	coco_categories.txt - lista kategorii i superkategorii COCO dostosowana do serwera ewaluacyjnego test-dev
