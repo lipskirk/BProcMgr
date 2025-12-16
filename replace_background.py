@@ -43,32 +43,27 @@ for file in filenames :
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
         (thresh, binRed) = cv2.threshold(mask, 128, 255, cv2.THRESH_BINARY)
 
-        # Binarna maska z morfologia i blur
         b_mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=1)
         b_mask = cv2.GaussianBlur(b_mask, (0,0), sigmaX=2, sigmaY=2, borderType = cv2.BORDER_DEFAULT)
         b_mask = skimage.exposure.rescale_intensity(b_mask, in_range=(127.5, 255), out_range=(0, 255))
 
-        # Podmiana tla na podstawie binarnej maski
         backgr[b_mask > 0] = 0
         backgr += image * (b_mask > 0)
 
-        # Znowu binaryzacja oryginalnej maski i narysowanie kontorow
         gray = cv2.cvtColor(mask,cv2.COLOR_BGR2GRAY)
         _,binary = cv2.threshold(gray,100,255,cv2.THRESH_BINARY)
         contours = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         contours = contours[0] if len(contours) == 2 else contours[1]
         cv2.drawContours(empty, contours, -1, (255, 255, 255), 2)
 
-        # Rozmycie kontorow
         b_cont = cv2.GaussianBlur(empty, (0,0), sigmaX=2, sigmaY=2, borderType = cv2.BORDER_DEFAULT)
 
-        # Poprawienie krawedzi metoda inpaint
         gr_cont = cv2.cvtColor(b_cont, cv2.COLOR_BGR2GRAY)
         _,bin_cont = cv2.threshold(gr_cont, 100, 255, cv2.THRESH_BINARY)
         output = cv2.inpaint(backgr, bin_cont, 3, cv2.INPAINT_NS)
 
-        # Zapisanie gotowego obrazu
         cv2.imwrite(args.output + "/" + filename[0] + "_RB" + ".jpg", output)
         cnt += 1
         print("Replaced background in " + str(cnt) + "/" + str(num_imgs))
 print("Done")
+
